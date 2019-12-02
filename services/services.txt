@@ -1,0 +1,17 @@
+api/user/login (POST)
+api/user/register/ (POST)
+api/user/profile/ (GET)
+api/user/logout (GET)
+------------------
+api/attendee/attend/:eventId (PUT)
+api/attendee/unattend/:eventId (PUT)
+api/attendee/follow/:organizerId (PUT)
+api/attendee/unfollow/:organizerId
+api/attendee/organizations (List all the organizations followed by attendee)
+api/attendee/events (List of events attended by attendee)
+----------------------
+api/organizer/create/ (Event in Body)
+api/organizer/update/:eventId
+api/organizer/cancel/:eventId
+api/organizer/events (List all events under organizer)
+api/organizer/:eventId/attendees (List of all events, attending a particular event)

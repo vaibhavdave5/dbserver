@@ -1,0 +1,22 @@
+{
+  "name": "game_of_chrome_server",
+  "version": "1.0.0",
+  "description": "middle tier of the event application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.ccs.neu.edu:deesha/Game_Of_Chrome_Server.git"
+  },
+  "author": "Deesha, Mitali, Vaibhav",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "mongoose": "^5.5.2"
+  }
+}
