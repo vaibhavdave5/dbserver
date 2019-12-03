@@ -30,6 +30,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const userService = require('./services/user.service.server.js');
 userService(app);
 
+const datasetService = require('./services/dataset.service.server.js');
+datasetService(app);
+
 // const attendeeService = require('./services/attendee.service.server.js');
 // attendeeService(app);
 

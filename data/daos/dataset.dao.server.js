@@ -1,4 +1,4 @@
-const datasetModel = require('../models/user/dataset.model.server');
+const datasetModel = require('../models/dataset/dataset.model.server');
 
 createdataset = dataset =>
     datasetModel.create(dataset);
