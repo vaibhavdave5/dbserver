@@ -10,7 +10,8 @@ deletedataset = datasetId =>
     datasetModel.deleteOne({_id:datasetId});
 
 findAlldatasets = () =>
-    datasetModel.find();
+    datasetModel.find()
+        .populate('industry bias');
 
 module.exports = {
     createdataset,
