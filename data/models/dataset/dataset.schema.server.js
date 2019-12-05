@@ -6,7 +6,7 @@ const datasetSchema = mongoose.Schema({
     company: String,
     industry: [{type: Schema.Types.ObjectId, ref: 'IndustryModel'}],
     system_purpose: String,
-    type_of_bias: [{type: Schema.Types.ObjectId, ref: 'BiasModel'}],
+    bias: [{type: Schema.Types.ObjectId, ref: 'BiasModel'}],
     impact: String,
     link: String,
     ml_model: String
