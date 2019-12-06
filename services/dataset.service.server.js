@@ -18,10 +18,21 @@ module.exports = app => {
             req.session.destroy();
             res.send(200);
         });
+    
+    findAllbiases = (req, res) =>{
+        datasetDao.findAllbiases().then(response => res.send(response.filter(el => el != null)));
+    }
+
+    findBiasBasedResults = (req, res) => {
+        datasetDao.findBiasBasedResults(req.params['bias']).then(response => res.send(response));
+    }
+
 
     app.post('/api/dataset/create', createdataset);
     app.delete('/api/dataset/:datasetId', deletedataset);
     app.get('/api/dataset/:datasetId', finddatasetById);
+    app.get('/api/biases', findAllbiases);
     app.get('/api/dataset/', findAlldatasets);
+    app.get('/api/result/:bias', findBiasBasedResults);
 
 };

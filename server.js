@@ -33,6 +33,12 @@ userService(app);
 const datasetService = require('./services/dataset.service.server.js');
 datasetService(app);
 
+const biasService = require('./services/bias.service.server');
+biasService(app);
+
+const industryService = require('./services/industry.service.server');
+industryService(app);
+
 // const attendeeService = require('./services/attendee.service.server.js');
 // attendeeService(app);
 
@@ -45,4 +51,4 @@ datasetService(app);
 // const eventService = require('./services/event.service.server');
 // eventService(app);
 
-app.listen(5002);
+app.listen(5003);

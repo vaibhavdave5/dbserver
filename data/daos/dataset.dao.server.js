@@ -9,12 +9,20 @@ finddatasetById = datasetId =>
 deletedataset = datasetId =>
     datasetModel.deleteOne({_id:datasetId});
 
-findAlldatasets = () =>
+findAllbiases = () =>
+    datasetModel.find().distinct('type_of_bias');
+
+findAlldatasets = () => 
     datasetModel.find();
+
+findBiasBasedResults = (bias) =>
+    datasetModel.find({'type_of_bias': bias});
 
 module.exports = {
     createdataset,
     finddatasetById,
     deletedataset,
-    findAlldatasets
+    findAlldatasets,
+    findAllbiases,
+    findBiasBasedResults
 };
