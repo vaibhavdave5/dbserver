@@ -14,11 +14,15 @@ findAllbiases = () =>
 
 findAlldatasets = () => 
     datasetModel.find();
-    
+
+findBiasBasedResults = (bias) =>
+    datasetModel.find({'type_of_bias': bias});
+
 module.exports = {
     createdataset,
     finddatasetById,
     deletedataset,
     findAlldatasets,
-    findAllbiases
+    findAllbiases,
+    findBiasBasedResults
 };
