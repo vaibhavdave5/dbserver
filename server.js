@@ -39,6 +39,9 @@ biasService(app);
 const industryService = require('./services/industry.service.server');
 industryService(app);
 
+const chartService = require('./services/charts.service.server');
+chartService(app);
+
 // const attendeeService = require('./services/attendee.service.server.js');
 // attendeeService(app);
 
