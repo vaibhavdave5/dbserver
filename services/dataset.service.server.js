@@ -47,11 +47,8 @@ module.exports = app => {
     app.get('/api/dataset/biases', findAllbiases);
     app.get('/api/dataset/', findAlldatasets);
     app.get('/api/result/:bias', findBiasBasedResults);
-<<<<<<< HEAD
     app.get('/api/filter/:bias/:company', findDataSetByFilters);
-=======
     app.get('/api/dataset/stat/mlmodelcount', getMlModelCount);
     app.get('/api/dataset/stat/companycount', getCompanyCount);
->>>>>>> origin/chart-service
 
 };

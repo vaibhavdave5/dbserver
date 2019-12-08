@@ -27,8 +27,7 @@ findDataSetByFilters = (company, bias) =>{
    }
    return datasetModel.find({$and: [company?{'company':new RegExp(company, 'i')}:{}, bias?{'type_of_bias':bias}:{}]});
 }
-    datasetModel.find({'bias': bias});
-
+    
 getMLModelCount = () =>
     datasetModel.aggregate([
         {
