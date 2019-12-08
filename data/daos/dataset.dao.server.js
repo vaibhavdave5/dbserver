@@ -25,7 +25,7 @@ findDataSetByFilters = (company, bias) =>{
    if(bias === "All"){
        bias = ''
    }
-   return datasetModel.find({$and: [company?{'company':company}:{}, bias?{'type_of_bias':bias}:{}]});
+   return datasetModel.find({$and: [company?{'company':new RegExp(company, 'i')}:{}, bias?{'type_of_bias':bias}:{}]});
 }
 
 module.exports = {
