@@ -40,6 +40,10 @@ module.exports = app => {
         datasetDao.getCompanyCount().then(response => res.send(response));
     }
 
+    getAllIndustry = (req, res) => {
+        datasetDao.findAllIndustry().then(response => res.send(response));
+    }
+
 
     app.post('/api/dataset/create', createdataset);
     app.delete('/api/dataset/:datasetId', deletedataset);
@@ -50,5 +54,6 @@ module.exports = app => {
     app.get('/api/filter/:bias/:company', findDataSetByFilters);
     app.get('/api/dataset/stat/mlmodelcount', getMlModelCount);
     app.get('/api/dataset/stat/companycount', getCompanyCount);
+    app.get('/api/industry', getAllIndustry);
 
 };

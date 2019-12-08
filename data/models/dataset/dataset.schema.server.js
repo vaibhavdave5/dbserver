@@ -1,12 +1,12 @@
-const mongoose = require('mongoose'), Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
 const datasetSchema = mongoose.Schema({
-    time_frame: Date,
+    time_frame: String,
     email: String,
     company: String,
     industry: String,
     system_purpose: String,
-    bias: String,
+    type_of_bias: String,
     impact: String,
     link: String,
     ml_model: String

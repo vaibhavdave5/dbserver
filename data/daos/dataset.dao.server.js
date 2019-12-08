@@ -10,13 +10,16 @@ deletedataset = datasetId =>
     datasetModel.deleteOne({_id:datasetId});
 
 findAllbiases = () =>
-    datasetModel.find({sort:{time_frame:-1}}).distinct('type_of_bias');
+    datasetModel.distinct('type_of_bias');
+
+findAllIndustry = () =>
+    datasetModel.distinct('industry');
 
 findAlldatasets = () => 
-    datasetModel.find().populate('industry type_of_bias');
+    datasetModel.find();
 
 findBiasBasedResults = (bias) =>
-    datasetModel.find({'type_of_bias': bias},{sort:{rime_frame:-1}});
+    datasetModel.find({'type_of_bias': bias},{sort:{time_frame:-1}});
 
 findDataSetByFilters = (company, bias) =>{
    if(company === "All"){
@@ -64,5 +67,6 @@ module.exports = {
     findBiasBasedResults,
     findDataSetByFilters,
     getMLModelCount,
-    getCompanyCount
+    getCompanyCount,
+    findAllIndustry
 };

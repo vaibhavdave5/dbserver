@@ -33,12 +33,6 @@ userService(app);
 const datasetService = require('./services/dataset.service.server.js');
 datasetService(app);
 
-const biasService = require('./services/bias.service.server');
-biasService(app);
-
-const industryService = require('./services/industry.service.server');
-industryService(app);
-
 const chartService = require('./services/charts.service.server');
 chartService(app);
 

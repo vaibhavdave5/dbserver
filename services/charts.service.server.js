@@ -1,6 +1,4 @@
 const datasetDao = require('../data/daos/dataset.dao.server');
-const biasDao = require('../data/daos/bias.dao.server');
-const industryDao = require('../data/daos/industry.dao.server');
 
 getDataSetList = (datasetList) => {
     let currentYear = new Date(Date.now()).getFullYear();
@@ -21,13 +19,13 @@ module.exports = app => {
         let datasetList = [];
         getDataSetList(datasetList);
 
-        biasDao.getAllBias()
+        datasetDao.findAllbiases()
             .then(biases => {
                 biases.forEach(bias => {
 
                         datasetList.map(record => {
                             let obj = {
-                                'Bias': bias.type,
+                                'Bias': bias,
                                 'Count': 0
                             };
                                 record.CountByBias.push(obj);
@@ -38,13 +36,12 @@ module.exports = app => {
             .then(dbRecords => {
                     dbRecords.forEach(db => {
                         console.log(db);
-                        console.log(db.bias[0].type);
                         datasetList
                             .filter(record => record.Year == new Date(db.time_frame).getFullYear())
                             .map(record => {
                                 console.log(record);
                                 record.CountByBias
-                                .filter(biasType => biasType.Bias == db.bias[0].type).map(type => type.Count++)});
+                                .filter(biasType => biasType.Bias == db.type_of_bias).map(type => type.Count++)});
                     });
             })
             .then(() => res.send(datasetList));
@@ -54,13 +51,13 @@ module.exports = app => {
     getIncidentsReportedPerYearByIndustry = (req, res) => {
         let datasetList = [];
         getDataSetList(datasetList);
-        industryDao.getAllIndustry()
+        datasetDao.findAllINdustry()
             .then(industries => {
                 industries.forEach(industry => {
 
                     datasetList.map(record => {
                         let obj = {
-                            'Industry': industry.name,
+                            'Industry': industry,
                             'Count': 0
                         };
                         record.CountByIndustry.push(obj);
@@ -74,7 +71,7 @@ module.exports = app => {
                         .filter(record => record.Year == new Date(db.time_frame).getFullYear())
                         .map(record => {
                             record.CountByIndustry
-                                .filter(industryType => industryType.Industry == db.industry[0].name)
+                                .filter(industryType => industryType.Industry == db.industry)
                                 .map(type => type.Count++)});
                 });
             })
