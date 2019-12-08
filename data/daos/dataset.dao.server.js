@@ -13,7 +13,7 @@ findAllbiases = () =>
     datasetModel.find({sort:{time_frame:-1}}).distinct('type_of_bias');
 
 findAlldatasets = () => 
-    datasetModel.find().populate('industry bias');
+    datasetModel.find().populate('industry type_of_bias');
 
 findBiasBasedResults = (bias) =>
     datasetModel.find({'type_of_bias': bias},{sort:{rime_frame:-1}});
