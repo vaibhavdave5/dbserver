@@ -1,7 +1,7 @@
 const mongoose = require('mongoose'), Schema = mongoose.Schema;
 
 const datasetSchema = mongoose.Schema({
-    time_frame: String,
+    time_frame: Date,
     email: String,
     company: String,
     industry: [{type: Schema.Types.ObjectId, ref: 'IndustryModel'}],
