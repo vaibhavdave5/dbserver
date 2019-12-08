@@ -16,7 +16,7 @@ findAlldatasets = () =>
     datasetModel.find().populate('industry bias');
 
 findBiasBasedResults = (bias) =>
-    datasetModel.find({'type_of_bias': bias},{sort:{:-1}});
+    datasetModel.find({'type_of_bias': bias},{sort:{rime_frame:-1}});
 
 findDataSetByFilters = (company, bias) =>{
    if(company === "All"){
