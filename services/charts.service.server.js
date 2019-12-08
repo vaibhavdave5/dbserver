@@ -51,7 +51,7 @@ module.exports = app => {
     getIncidentsReportedPerYearByIndustry = (req, res) => {
         let datasetList = [];
         getDataSetList(datasetList);
-        datasetDao.findAllINdustry()
+        datasetDao.findAllIndustry()
             .then(industries => {
                 industries.forEach(industry => {
 
