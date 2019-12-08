@@ -24,7 +24,7 @@ module.exports = app => {
         });
     
     findAllbiases = (req, res) =>{
-        //datasetDao.findAllbiases().then(response => res.send(response.filter(el => el != null)));
+        datasetDao.findAllbiases().then(response => res.send(response.filter(el => el != null)));
     }
 
     findBiasBasedResults = (req, res) => {
@@ -41,14 +41,14 @@ module.exports = app => {
     }
 
     getAllIndustry = (req, res) => {
-        datasetDao.findAllIndustry().then(response => res.send(response));
+        datasetDao.findAllIndustry().then(response => res.send(response.filter(el => el != null)));
     }
 
 
     app.post('/api/dataset/create', createdataset);
     app.delete('/api/dataset/:datasetId', deletedataset);
     app.get('/api/dataset/:datasetId', finddatasetById);
-    app.get('/api/dataset/biases', findAllbiases);
+    app.get('/api/biases', findAllbiases);
     app.get('/api/dataset/', findAlldatasets);
     app.get('/api/result/:bias', findBiasBasedResults);
     app.get('/api/filter/:bias/:company', findDataSetByFilters);
