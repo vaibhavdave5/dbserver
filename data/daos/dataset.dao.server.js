@@ -13,7 +13,7 @@ findAllbiases = () =>
     datasetModel.find({sort:{year:-1}}).distinct('type_of_bias');
 
 findAlldatasets = () => 
-    datasetModel.find();
+    datasetModel.find().populate('industry bias');
 
 findBiasBasedResults = (bias) =>
     datasetModel.find({'type_of_bias': bias},{sort:{year:-1}});
@@ -27,6 +27,34 @@ findDataSetByFilters = (company, bias) =>{
    }
    return datasetModel.find({$and: [company?{'company':new RegExp(company, 'i')}:{}, bias?{'type_of_bias':bias}:{}]});
 }
+    datasetModel.find({'bias': bias});
+
+getMLModelCount = () =>
+    datasetModel.aggregate([
+        {
+            $group: {
+                _id: '$ml_model',
+                count: {$sum: 1}
+            }
+        },
+        {
+            $sort: {'count': -1}
+        }
+    ]).limit(5);
+
+getCompanyCount = () =>
+    datasetModel.aggregate([
+        {
+            $group: {
+                _id: '$company',
+                count: {$sum: 1}
+            }
+        },
+        {
+            $sort: {'count': -1}
+        }
+    ]).limit(5);
+
 
 module.exports = {
     createdataset,
@@ -35,5 +63,7 @@ module.exports = {
     findAlldatasets,
     findAllbiases,
     findBiasBasedResults,
-    findDataSetByFilters
+    findDataSetByFilters,
+    getMLModelCount,
+    getCompanyCount
 };
