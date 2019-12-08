@@ -18,11 +18,22 @@ findAlldatasets = () =>
 findBiasBasedResults = (bias) =>
     datasetModel.find({'type_of_bias': bias},{sort:{year:-1}});
 
+findDataSetByFilters = (company, bias) =>{
+   if(company === "All"){
+       company = ''
+   }
+   if(bias === "All"){
+       bias = ''
+   }
+   return datasetModel.find({$and: [company?{'company':company}:{}, bias?{'type_of_bias':bias}:{}]});
+}
+
 module.exports = {
     createdataset,
     finddatasetById,
     deletedataset,
     findAlldatasets,
     findAllbiases,
-    findBiasBasedResults
+    findBiasBasedResults,
+    findDataSetByFilters
 };
