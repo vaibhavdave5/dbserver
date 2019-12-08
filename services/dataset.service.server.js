@@ -27,6 +27,14 @@ module.exports = app => {
         datasetDao.findBiasBasedResults(req.params['bias']).then(response => res.send(response));
     }
 
+    getMlModelCount = (req, res) => {
+        datasetDao.getMLModelCount().then(response => res.send(response));
+    }
+
+    getCompanyCount = (req, res) => {
+        datasetDao.getCompanyCount().then(response => res.send(response));
+    }
+
 
     app.post('/api/dataset/create', createdataset);
     app.delete('/api/dataset/:datasetId', deletedataset);
@@ -34,5 +42,7 @@ module.exports = app => {
     app.get('/api/dataset/biases', findAllbiases);
     app.get('/api/dataset/', findAlldatasets);
     app.get('/api/result/:bias', findBiasBasedResults);
+    app.get('/api/dataset/stat/mlmodelcount', getMlModelCount);
+    app.get('/api/dataset/stat/companycount', getCompanyCount);
 
 };
