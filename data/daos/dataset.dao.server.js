@@ -10,13 +10,13 @@ deletedataset = datasetId =>
     datasetModel.deleteOne({_id:datasetId});
 
 findAllbiases = () =>
-    datasetModel.find({sort:{year:-1}}).distinct('type_of_bias');
+    datasetModel.find({sort:{time_frame:-1}}).distinct('type_of_bias');
 
 findAlldatasets = () => 
     datasetModel.find().populate('industry bias');
 
 findBiasBasedResults = (bias) =>
-    datasetModel.find({'type_of_bias': bias},{sort:{year:-1}});
+    datasetModel.find({'type_of_bias': bias},{sort:{:-1}});
 
 findDataSetByFilters = (company, bias) =>{
    if(company === "All"){
