@@ -1,12 +1,12 @@
 const mongoose = require('mongoose'), Schema = mongoose.Schema;
 
 const datasetSchema = mongoose.Schema({
-    time_frame: String,
+    year: String,
     email: String,
     company: String,
-    industry: [{type: Schema.Types.ObjectId, ref: 'IndustryModel'}],
+    industry: String,
     system_purpose: String,
-    bias: [{type: Schema.Types.ObjectId, ref: 'BiasModel'}],
+    bias: String,
     impact: String,
     link: String,
     ml_model: String
